@@ -1,0 +1,31 @@
+$title-font-fs: 5rem;
+$sub-font-fs: 2rem;
+
+.hero {
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2.5vw;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero {
+    height: 50vh;
+    .container {
+      .inner {
+        max-width: 1000px;
+
+        h2 {
+          font-size: $title-font-fs;
+        }
+        h3 {
+          font-size: $sub-font-fs;
+        }
+      }
+    }
+  }
+}

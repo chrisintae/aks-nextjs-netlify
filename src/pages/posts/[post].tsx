@@ -7,11 +7,13 @@ import { fetchPostContent } from "../../lib/posts";
 import fs from "fs";
 import yaml from "js-yaml";
 import { parseISO } from 'date-fns';
-import PostLayout from "../../components/PostLayout";
+import ProjectLayout from "../../components/ProjectLayout";
 
 import InstagramEmbed from "react-instagram-embed";
 import YouTube from "react-youtube";
 import { TwitterTweetEmbed } from "react-twitter-embed";
+
+import Layout from '../../components/Layout'
 
 export type Props = {
   title: string;
@@ -41,16 +43,18 @@ export default function Post({
 }: Props) {
   const content = hydrate(source, { components })
   return (
-    <PostLayout
-      title={title}
-      date={parseISO(dateString)}
-      slug={slug}
-      tags={tags}
-      author={author}
-      description={description}
-    >
-      {content}
-    </PostLayout>
+    <Layout>
+      <ProjectLayout
+        title={title}
+        date={parseISO(dateString)}
+        slug={slug}
+        tags={tags}
+        author={author}
+        description={description}
+      >
+        {content}
+      </ProjectLayout>
+    </Layout>
   )
 }
 
