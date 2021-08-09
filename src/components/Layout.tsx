@@ -1,12 +1,11 @@
-import React from 'react'
-
-import { GetStaticProps } from "next";
+import { useEffect, useState } from 'react';
 import Head from 'next/head'
 import Link from 'next/link'
 
 import styles from '../styles/components/layout.module.scss'
 
 import config from "../lib/config";
+import { WSAEINVALIDPROVIDER } from 'node:constants';
 
 type Props = {
   children: React.ReactNode;
@@ -30,8 +29,21 @@ export default function Layout({ children }: Props) {
 }
 
 const Header = ({ siteTitle }) => {
+  const [headerBg, setHeaderBg] = useState(false)
+  const [scrollPos, setScrollPos] = useState(0)
+
+  const updateHeaderBg = () => {
+    window.pageYOffset >= 60 ? setHeaderBg(true) : setHeaderBg(false)
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      updateHeaderBg()
+    })
+  })
+
   return (
-      <header className={styles.header}>
+      <header className={`${styles.header} ${headerBg ? styles.scroll : ''}`}>
           <div className={styles.container}>
               <Link href='/' passHref>
                   <div className={styles.logo}>
