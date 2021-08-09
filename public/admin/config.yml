@@ -150,5 +150,6 @@ collections:
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Type", name: "type", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "LinkLabel", name: "link label", widget: "string" }
+      - { label: "Link", name: "link", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
