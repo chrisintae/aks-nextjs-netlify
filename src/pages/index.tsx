@@ -12,7 +12,7 @@ type Props = {
   title: string;
 }
 
-const Index = ({ posts, title }: Props) => {
+const Index = ({ posts }: Props) => {
   return (
     <Layout>
       <Hero 
