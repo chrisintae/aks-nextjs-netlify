@@ -1,46 +1,49 @@
-import Head from "next/head";
-import Navigation from "./Navigation";
+import Head from 'next/head'
+import Link from 'next/link'
+
+import styles from '../styles/components/layout.module.scss'
 
 type Props = {
   children: React.ReactNode;
 };
 export default function Layout({ children }: Props) {
   return (
-    <div className="root">
+    <>
       <Head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="apple-touch-icon" href="/icon.png" />
-        <meta name="theme-color" content="#fff" />
+          <title>akcolades</title>
+          <meta name="description" content="akcolades" />
+          <link rel="icon" href="/favicon.ico" />
       </Head>
-      <nav>
-        <Navigation />
-      </nav>
-      <main>{children}</main>
-      <style jsx>
-        {`
-          .root {
-            display: block;
-            padding: 4rem 0;
-            box-sizing: border-box;
-            height: 100%;
-          }
-          main {
-            display: flex;
-            min-height: 100%;
-          }
-          @media (min-width: 769px) {
-            .root {
-              display: flex;
-              flex: 1 0 auto;
-            }
-            main {
-              flex: 1 0 auto;
-            }
-          }
-        `}
-      </style>
-    </div>
+      <Header />
+      <main>
+          {children}
+      </main>
+    </>
   );
+}
+
+const Header = () => {
+  return (
+      <header className={styles.header}>
+          <div className={styles.container}>
+              <Link href='/' passHref>
+                  <div className={styles.logo}>
+                      akcolades
+                  </div>
+              </Link>
+              <Nav />
+          </div >
+      </header >
+  )
+}
+
+const Nav = () => {
+  return (
+      <nav className={styles.nav}>
+          <ul>
+              <li>Fresh.</li>
+              <li>Me.</li>
+          </ul>
+      </nav>
+  )
 }
