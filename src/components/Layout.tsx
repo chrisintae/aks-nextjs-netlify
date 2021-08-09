@@ -1,7 +1,12 @@
+import React from 'react'
+
+import { GetStaticProps } from "next";
 import Head from 'next/head'
 import Link from 'next/link'
 
 import styles from '../styles/components/layout.module.scss'
+
+import config from "../lib/config";
 
 type Props = {
   children: React.ReactNode;
@@ -10,11 +15,13 @@ export default function Layout({ children }: Props) {
   return (
     <>
       <Head>
-          <title>akcolades</title>
-          <meta name="description" content="akcolades" />
+          <title>{config.site_title}</title>
+          <meta name="description" content={config.site_description} />
           <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <Header 
+        siteTitle={config.site_title}
+      />
       <main>
           {children}
       </main>
@@ -22,13 +29,13 @@ export default function Layout({ children }: Props) {
   );
 }
 
-const Header = () => {
+const Header = ({ siteTitle }) => {
   return (
       <header className={styles.header}>
           <div className={styles.container}>
               <Link href='/' passHref>
                   <div className={styles.logo}>
-                      akcolades
+                    {siteTitle}
                   </div>
               </Link>
               <Nav />
