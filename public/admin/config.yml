@@ -18,9 +18,9 @@ collections:
         file: "config.json"
         description: "General site settings"
         fields:
-          - label: "URL",
-            name: "base_url",
-            widget: "string",
+          - label: "URL"
+            name: "base_url"
+            widget: "string"
             hint: "Do not enter the trailing slash of the URL"
           - label: "Site title"
             name: "site_title"
