@@ -1,24 +1,31 @@
-import { GetStaticProps } from "next";
-import Grid from "../components/Grid";
+import { GetStaticProps, GetStaticPaths } from "next";
 
 import Hero from "../components/Hero";
 import Layout from "../components/Layout";
+import Grid from "../components/Grid";
 
-import config from "../lib/config";
-import { listPostContent, PostContent } from "../lib/posts";
+import fs from 'fs'
+import { join } from 'path'
+import matter from 'gray-matter'
+import { getContentFrontMatter } from '../lib/api'
 
 type Props = {
-  posts: PostContent[];
   title: string;
+  projects: any;
 }
 
-const Index = ({ posts }: Props) => {
+const Index = ({ projects }: Props) => {  
   return (
     <Layout>
       <Hero 
-      title=''
+        title=''
+        type=''
       />
-      <Grid projects={posts}/>
+
+      <Grid 
+        projects={projects}
+      />
+
     </Layout>
   );
 }
@@ -26,11 +33,11 @@ const Index = ({ posts }: Props) => {
 export default Index
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = listPostContent(1, config.posts_per_page);
-  
+  const projects = getContentFrontMatter('content/projects');
+
   return {
     props: {
-      posts
-    },
-  };
-};
+      projects
+    }
+  }
+}

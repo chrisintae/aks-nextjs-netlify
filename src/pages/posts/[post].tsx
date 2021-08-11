@@ -7,7 +7,7 @@ import { fetchPostContent } from "../../lib/posts";
 import fs from "fs";
 import yaml from "js-yaml";
 import { parseISO } from 'date-fns';
-import ProjectLayout from "../../components/ProjectLayout";
+import PostLayout from "../../components/PostLayout";
 
 import InstagramEmbed from "react-instagram-embed";
 import YouTube from "react-youtube";
@@ -44,7 +44,7 @@ export default function Post({
   const content = hydrate(source, { components })
   return (
     <Layout>
-      <ProjectLayout
+      <PostLayout
         title={title}
         date={parseISO(dateString)}
         slug={slug}
@@ -53,7 +53,7 @@ export default function Post({
         description={description}
       >
         {content}
-      </ProjectLayout>
+      </PostLayout>
     </Layout>
   )
 }
