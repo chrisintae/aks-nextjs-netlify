@@ -1,0 +1,29 @@
+$mdx-h2-fs: 2.5rem;
+$mdx-p-fs: 2rem;
+
+.bodyContent {
+  .container {
+    padding: 0 16px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bodyContent {
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+
+      h2 {
+        font-size: $mdx-h2-fs;
+        margin: 100px 0 20px;
+      }
+
+      p {
+        font-size: $mdx-p-fs;
+        font-weight: 200;
+        letter-spacing: 0.25px;
+      }
+    }
+  }
+}
