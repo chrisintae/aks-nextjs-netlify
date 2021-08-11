@@ -88,19 +88,19 @@ collections:
                 widget: "string"
                 hint: "Tag name for displaying on the site"
   - name: "projects"
-    label: "Projects"
-    folder: "content/projects/"
-    extension: "mdx"
-    format: "frontmatter"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Type", name: "type", widget: "string" }
-      - { label: "LinkLabel", name: "link label", widget: "string" }
-      - { label: "Link", name: "link", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      label: "Projects"
+      folder: "content/projects/"
+      extension: "mdx"
+      format: "frontmatter"
+      create: true
+      slug: "{{slug}}"
+      fields:
+        - { label: "Slug", name: "slug", widget: "string" }
+        - { label: "Title", name: "title", widget: "string" }
+        - { label: "Type", name: "type", widget: "string" }
+        - { label: "LinkLabel", name: "link label", widget: "string" }
+        - { label: "Link", name: "link", widget: "string" }
+        - { label: "Body", name: "body", widget: "markdown" }
   - name: "posts"
       label: "Posts"
       folder: "content/posts/"
