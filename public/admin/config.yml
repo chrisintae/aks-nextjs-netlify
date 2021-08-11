@@ -18,18 +18,16 @@ collections:
         file: "config.json"
         description: "General site settings"
         fields:
-          - {
-              label: "URL",
-              name: "base_url",
-              widget: "string",
-              hint: "Do not enter the trailing slash of the URL",
-            }
-          - { label: "Site title", name: "site_title", widget: "string" }
-          - {
-              label: "Site description",
-              name: "site_description",
-              widget: "string",
-            }
+          - label: "URL",
+            name: "base_url",
+            widget: "string",
+            hint: "Do not enter the trailing slash of the URL"
+          - label: "Site title"
+            name: "site_title"
+            widget: "string"
+          - label: "Site description"
+            name: "site_description"
+            widget: "string"
           - label: "Site keywords"
             name: "site_keywords"
             widget: "list"
@@ -38,16 +36,18 @@ collections:
               label: Keyword
               name: keyword
               widget: "string"
-          - {
-              label: "Twitter account",
-              name: "twitter_account",
-              widget: "string",
-            }
-          - {
-              label: "GitHub account",
-              name: "github_account",
-              widget: "string",
-            }
+          - label: "Twitter account"
+            name: "twitter_account"
+            widget: "string"
+          - label: "GitHub account"
+            name: "github_account"
+            widget: "string"
+          - label: "Navigation"
+            name: "links"
+            widget: "list"
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Link, name: url, widget: string }
   - name: "meta"
     label: "Meta"
     delete: false
@@ -93,58 +93,18 @@ collections:
                 name: "name"
                 widget: "string"
                 hint: "Tag name for displaying on the site"
-
-  - name: "posts"
-    label: "Posts"
-    folder: "content/posts/"
+  - name: 'pages'
+    label: 'Pages'
+    folder: "content/pages/"
     extension: "mdx"
     format: "frontmatter"
     create: true
     slug: "{{slug}}"
-    identifier_field: slug
-    summary: "{{title}}"
     fields:
-      - label: "Slug"
-        name: "slug"
-        widget: "string"
-      - label: "Title"
-        name: "title"
-        widget: "string"
-      - label: "Publish Date"
-        name: "date"
-        widget: "datetime"
-        format: "YYYY-MM-DD"
-        dateFormat: "YYYY-MM-DD"
-        timeFormat: false
-      - label: Author
-        name: "author"
-        widget: relation
-        collection: "meta"
-        file: "authors"
-        searchFields:
-          - "authors.*.name"
-        displayFields:
-          - "authors.*.name"
-        valueField: "authors.*.slug"
-      - label: Tags
-        label_singular: "Tag"
-        name: "tags"
-        widget: list
-        summary: "{{fields.tag}}"
-        field:
-          label: Tag
-          name: tag
-          widget: relation
-          collection: "meta"
-          file: "tags"
-          searchFields:
-            - "tags.*.name"
-          displayFields:
-            - "tags.*.name"
-          valueField: "tags.*.slug"
-      - label: "Body"
-        name: "body"
-        widget: "markdown"
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "Subtitle", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
   - name: "projects"
     label: "Projects"
     folder: "content/projects/"
@@ -159,3 +119,54 @@ collections:
       - { label: "LinkLabel", name: "link label", widget: "string" }
       - { label: "Link", name: "link", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
+  - name: "posts"
+      label: "Posts"
+      folder: "content/posts/"
+      extension: "mdx"
+      format: "frontmatter"
+      create: true
+      slug: "{{slug}}"
+      identifier_field: slug
+      summary: "{{title}}"
+      fields:
+        - label: "Slug"
+          name: "slug"
+          widget: "string"
+        - label: "Title"
+          name: "title"
+          widget: "string"
+        - label: "Publish Date"
+          name: "date"
+          widget: "datetime"
+          format: "YYYY-MM-DD"
+          dateFormat: "YYYY-MM-DD"
+          timeFormat: false
+        - label: Author
+          name: "author"
+          widget: relation
+          collection: "meta"
+          file: "authors"
+          searchFields:
+            - "authors.*.name"
+          displayFields:
+            - "authors.*.name"
+          valueField: "authors.*.slug"
+        - label: Tags
+          label_singular: "Tag"
+          name: "tags"
+          widget: list
+          summary: "{{fields.tag}}"
+          field:
+            label: Tag
+            name: tag
+            widget: relation
+            collection: "meta"
+            file: "tags"
+            searchFields:
+              - "tags.*.name"
+            displayFields:
+              - "tags.*.name"
+            valueField: "tags.*.slug"
+        - label: "Body"
+          name: "body"
+          widget: "markdown"
