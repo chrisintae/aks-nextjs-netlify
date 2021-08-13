@@ -15,5 +15,11 @@
   ],
   "posts_per_page": 5,
   "twitter_account": "@chris_intae",
-  "github_account": "chrisintae"
+  "github_account": "chrisintae",
+  "top_nav": [
+    {
+      "nav_label": "Fresh.",
+      "nav_url": "/"
+    }
+  ]
 }
